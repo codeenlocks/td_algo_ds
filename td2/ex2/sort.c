@@ -93,11 +93,18 @@ int partition(int *arr, int l, int r)
 {
     // partition function
     int pivot = arr[r] ;
+    int p_r = r ;
+    int p_l = l ;
     int i = l-1 ;
-    for(int j=l; j<r; j++){
-        if(arr[j]<=pivot){
-            i++ ;
-            swap_int(&arr[i], &arr[j]) ;
+    for(int j=l; j<r && p_l<p_r ; j++){
+        if(arr[j]>pivot){
+            swap_int(&arr[p_r], &arr[j]) ;
+            p_r--;
+            pivot = arr[p_r];
+        }
+        else if(arr[j]<pivot){
+            swap_int(&arr[p_l], &arr[j]) ;
+            p_l++;
         }
     }
 }

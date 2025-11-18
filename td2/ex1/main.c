@@ -8,14 +8,15 @@ int main(void){
     // implement main here
     // create array example using malloc
     // use searching algorithms and compare runtime
-    int taille = 100 ;
+    int taille = 100000 ;
     int* arr = malloc(taille*sizeof(int)) ;
     for(int i=0; i<taille; i++){
         arr[i] = i ;
     }
-    int target1 = 500 ;
-    int target2 = 10001 ;
-    int target0 = 50 ;
+    int target1 = arr[taille-1] ;
+    int target2 = arr[taille/2] ;
+    int target3 = arr[0] ;
+    int target0 = -taille ;
     if(!is_sorted_nondecreasing(arr, taille)) {
         printf("Array is not sorted\n") ;
         return -1 ;   
@@ -23,7 +24,7 @@ int main(void){
     clock_t start, end ;
     double cpu_time_used ;
     int result ;
-    int target = target0;
+    int target = target0; // change target here to test different cases
     start = clock() ;
     result =  linear_search(arr, taille, target) ;
     end = clock() ;
